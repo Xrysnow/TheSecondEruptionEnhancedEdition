@@ -9,11 +9,32 @@
         LOCAL_MODE = true
     }
 
-    const BOOK_DECRIPTION = '2000年2月1日午夜，在西伯利亚的天命巴比伦实验室中，所有研究员一夜之间全部消失。在奥托下令调查这起“神秘”事件的同时，还有人似乎在担忧着“她”的出现。而这一切，揭开了第二次崩坏的序幕…'
+    var BOOK_DECRIPTION = ''
+    if (LANGUAGE == 'jp') {
+        BOOK_DECRIPTION = 'TODO'
+    } else if (LANGUAGE == 'en') {
+        BOOK_DECRIPTION = 'February 2000: Every personnel of Babylon Labs vanished within a single night. Overseer Otto of Schicksal dispatched a special task force to investigate the incident. No one realized that this mysterious event would quickly escalate to global proportions.'
+    } else {
+        BOOK_DECRIPTION = '2000年2月1日午夜，在西伯利亚的天命巴比伦实验室中，所有研究员一夜之间全部消失。在奥托下令调查这起“神秘”事件的同时，还有人似乎在担忧着“她”的出现。而这一切，揭开了第二次崩坏的序幕…'
+    }
+
     const BOOK_COVER_SRC = LOCAL_MODE ? 'img/book_cover/1012.jpg' : 'https://comicstatic.bh3.com/new_static_v2/comic/book_cover/1012.jpg'
     const COVER_SRC_PREFIX = LOCAL_MODE ? 'img/chapter_cover/1012/' : 'https://comicstatic.bh3.com/new_static_v2/comic/chapter_cover/1012/'
-    const IMG_SRC_PREFIX = LOCAL_MODE ? 'img/book/1012/' : 'https://comicstatic.bh3.com/new_static_v2/comic/book/1012/'
-    const HOME_BG_SRC = IMG_SRC_PREFIX + '30/0001.jpg'
+
+    var IMG_SRC_PREFIX = null
+    if (LANGUAGE == 'jp') {
+        IMG_SRC_PREFIX = 'img/book/1012_jp/'
+    } else if (LANGUAGE == 'en') {
+        IMG_SRC_PREFIX = LOCAL_MODE ? 'img/book/1012_en/' : 'https://d2tpbmzklky1cl.cloudfront.net/manga/static/comic/book/1005/'
+    } else {
+        IMG_SRC_PREFIX = LOCAL_MODE ? 'img/book/1012/' : 'https://comicstatic.bh3.com/new_static_v2/comic/book/1012/'
+    }
+
+    var HOME_BG_SRC = IMG_SRC_PREFIX + '30/0001.jpg'
+    if (LANGUAGE == 'en') {
+        HOME_BG_SRC = LOCAL_MODE ? 'img/book/1012_en/cover.jpg' : 'https://comicstatic.bh3.com/new_static_v2/comic/book/1012/30/0001.jpg'
+    }
+
     const NUM_CHAPTER = 67
     const CHAPTER_TITLES = [
         "楔子 诡变",
@@ -65,7 +86,7 @@
         "66 Wallpapers"
     ]
 
-    const NUM_PAGES = [
+    var NUM_PAGES = [
         24, 18, 23, 18, 30,
         22, 25, 29, 21, 27,
         21, 26, 27, 29, 19,
@@ -81,6 +102,18 @@
         27, 23, 18, 22, 34,
         75, 22
     ]
+    if (LANGUAGE == 'en') {
+        NUM_PAGES = [
+            24, 16, 16, 14, 28, 20, 20, 24, 18, 23,
+            20, 27, 27, 20, 19, 20, 18, 25, 42, 19,
+            21, 21, 22, 16, 21, 19, 20, 18, 23, 30,
+            20, 17, 18, 20, 17, 18, 20, 20, 22, 18,
+            19, 18, 17, 20, 24, 24, 17, 20, 21, 20,
+            24, 23, 21, 21, 21, 21, 21, 22, 27, 23,
+            18, 22, 27, 23, 27, 22, 34
+        ]
+    }
+
     // from CloudMusic@EastenTX, list id = 6941570124
     const BGM_SINGLE_ID = [
         1818567465,
@@ -107,7 +140,7 @@
         1334673828
     ]
     // from bilibili@Eastenhhh
-    const BGM_INFO = [
+    var BGM_INFO = [
         [
             [1, 2, 3],
             [0, 48, 73]
@@ -154,6 +187,56 @@
         12, 12, 11, 19, 10,
         10, -1, 22, 14
     ]
+    if (LANGUAGE == 'en') {
+        BGM_INFO = [
+            [
+                [1, 2, 3],
+                [0, 48, 73]
+            ],
+            // 1-10
+            4, [
+                [5, 6],
+                [0, 42]
+            ], 3, [
+                [3, 7],
+                [0, 61]
+            ],
+            [
+                [8, 11],
+                [0, 24]
+            ],
+            1, 9, 10, [
+                [11, 12],
+                [0, 19]
+            ], 13,
+            // 11-20
+            13, [
+                [14, 3],
+                [0, 26]
+            ], 15, 15, 16,
+            16, 17, 6, 8, 11,
+            // 21-30
+            11, 14, 14, 6, 13,
+            8, 9, 8, 6, 6,
+            // 31-40
+            6, [
+                [18, 11],
+                [0, 34]
+            ], 19, 20, 13,
+            20, 11, 19, 11, 11,
+            // 41-50
+            11, 10, 21, 8, 8,
+            21, [
+                [21, 8],
+                [0, 78]
+            ], 8, 14, 16,
+            // 51-
+            16, 12, 12, 8, 11,
+            12, 12, 11, 19, 10,
+            10, 22, 22, 22, 14, -1
+        ]
+    }
+
     const MUSIC_LOCAL_SRC_PREFIX = 'res/music/'
     const MUSIC_LOCAL_SRC_POSTFIX = '.mp3'
     const VOICE_SRC_PREFIX = VOICE_LANGUAGE == 'jp' ? 'res/voice_jp/' : 'res/voice/'
