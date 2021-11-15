@@ -615,6 +615,13 @@
         }
     }
 
+    const SetStyle = function () {
+        var ret_btn = document.getElementById('home-index-return')
+        if (LANGUAGE == 'en') {
+            ret_btn.style.fontSize = '2rem'
+        }
+    }
+
     const ClearGallery = function () {
         GlobalViewer.hide()
         var obj_gallery = document.getElementById('gallery')
@@ -978,5 +985,6 @@
     SetHomePage()
     SetMenu()
     SetMenuConfig()
+    SetStyle()
     GotoPage(-1)
 })();
