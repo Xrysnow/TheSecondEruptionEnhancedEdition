@@ -246,6 +246,7 @@
         1: {
             3: 1, // c6-7
             4: 1, // c23-5
+            en: 1 // offset or mapping for en
         },
         3: {
             8: 2, // c24-11
@@ -257,6 +258,7 @@
         },
         6: {
             4: 1, // c24-11
+            en: 1
         },
         7: {
             9: 1, // c2-17
@@ -264,6 +266,7 @@
             13: 1, // c24-11
             14: 2, // c24-11
             15: 3, // c24-11
+            en: { 9: 9, 13: 12, 14: 13, 15: 14, 16: 15 }
         },
         8: {
             13: 1, // BV1aW411P7UJ
@@ -276,6 +279,7 @@
             18: 1, // c24-11
             20: 1, // BV1H54y1y7wJ
             22: 1, // c24-11
+            en: { 8: 8, 13: 13, 18: 18, 21: 20, 23: 22 }
         },
         11: {
             7: 2, // c24-11
@@ -381,6 +385,7 @@
         },
         67: {
             22: 1 // BV14X4y1w7P6
+            // en in 66
         }
     }
     const VOICE_ICON = '<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M6 18v12h8l10 10V8L14 18H6zm27 6c0-3.53-2.04-6.58-5-8.05v16.11c2.96-1.48 5-4.53 5-8.06zM28 6.46v4.13c5.78 1.72 10 7.07 10 13.41s-4.22 11.69-10 13.41v4.13c8.01-1.82 14-8.97 14-17.54S36.01 8.28 28 6.46z"/></svg>'
@@ -542,11 +547,9 @@
             obj_img_wrapper.className = 'home-index-img-wrapper'
             obj_text.className = 'home-index-banner'
             //
-            obj_text.textContent = CHAPTER_TITLES[i]
+            obj_text.textContent = GetChapterTitle(i)
             //
-            var num = '' + (i + 1)
-            var src = COVER_SRC_PREFIX + num + '.jpg'
-            obj_img.src = src
+            obj_img.src = GetChapterCoverSrc(i)
             //
             obj_img_wrapper.appendChild(obj_img)
             obj_a.appendChild(obj_img_wrapper)
@@ -653,7 +656,7 @@
         //
         var ctitle = document.getElementById('chapter-title')
         if (ctitle) {
-            ctitle.textContent = CHAPTER_TITLES[idx]
+            ctitle.textContent = GetChapterTitle(idx) //+ ' ' + (idx + 1)
         }
         //
         console.log('ClearGallery')
@@ -691,7 +694,7 @@
                 var handle = 0
                 obj_icon_box.onclick = function () {
                     //
-                    if (idx == 66 && i == 21 & j == 0) {
+                    if (idx == (LANGUAGE == 'en' ? 65 : 66) && i == 21 & j == 0) {
                         RemoveBGMPlayer()
                         BgMusicSpecialPause = true
                         if (handle) {
@@ -831,24 +834,145 @@
     })
 
     function GetVoiceCount(i_chapter, i_page) {
-        if (!VOICE_INFO[i_chapter + 1]) {
-            return 0
+        if (LANGUAGE != 'en') {
+            if (!VOICE_INFO[i_chapter + 1]) {
+                return 0
+            }
+            var v = VOICE_INFO[i_chapter + 1][i_page + 1]
+            if (!v) {
+                return 0
+            }
+            return v
+        } else {
+            var num = i_chapter + 1
+            var c = num
+            if (num >= 30 && num <= 51) {
+                c = num + 1
+            } else if (num >= 52 && num <= 62) {
+                c = num + 2
+            } else if (num == 63) {
+                c = 66
+            } else if (num == 64) {
+                c = 66
+                i_page += 26
+            } else if (num == 65) {
+                c = 66
+                i_page += 48
+            } else if (num == 66) {
+                c = 67
+            }
+            if (!VOICE_INFO[c]) {
+                return 0
+            }
+            if (VOICE_INFO[c].en) {
+                mapping = VOICE_INFO[c].en
+                if (typeof (mapping) == 'number') {
+                    i_page -= mapping
+                } else if (mapping[i_page + 1]) {
+                    i_page = mapping[i_page + 1] - 1
+                } else {
+                    return 0
+                }
+            }
+            var v = VOICE_INFO[c][i_page + 1]
+            if (!v) {
+                return 0
+            }
+            return v
         }
-        var v = VOICE_INFO[i_chapter + 1][i_page + 1]
-        if (!v) {
-            return 0
-        }
-        return v
     }
 
     function GetVoiceSrc(i_chapter, i_page, i_voice) {
         var c = '' + (i_chapter + 1)
         var p = '' + (i_page + 1)
         var v = '' + (i_voice + 1)
+        if (LANGUAGE == 'en') {
+            var num = i_chapter + 1
+            c = num
+            if (num >= 30 && num <= 51) {
+                c = num + 1
+            } else if (num >= 52 && num <= 62) {
+                c = num + 2
+            } else if (num == 63) {
+                c = 66
+            } else if (num == 64) {
+                c = 66
+                i_page += 26
+            } else if (num == 65) {
+                c = 66
+                i_page += 48
+            } else if (num == 66) {
+                c = 67
+            }
+            if (num <= 62 && VOICE_INFO[c] && VOICE_INFO[c].en) {
+                var mapping = VOICE_INFO[c].en
+                if (typeof (mapping) == 'number') {
+                    i_page -= mapping
+                } else if (mapping[i_page + 1]) {
+                    i_page = mapping[i_page + 1] - 1
+                }
+            }
+            c = '' + c
+            p = '' + (i_page + 1)
+        }
         var file = [c, p, v].map(function (e, i, a) {
             return '0'.repeat(2 - e.length) + e
         }).join('_') + VOICE_SRC_POSTFIX
         return VOICE_SRC_PREFIX + file
+    }
+
+    function GetChapterCoverSrc(i) {
+        var num = i + 1
+        if (LANGUAGE != 'en') {
+            return COVER_SRC_PREFIX + num + '.jpg'
+        } else {
+            //[30, 52, 65]
+            var n = null
+            if (num <= 29) {
+                n = num
+            } else if (num >= 30 && num <= 51) {
+                n = num + 1
+            } else if (num >= 52 && num <= 62) {
+                n = num + 2
+            } else if (num == 63) {
+                if (LOCAL_MODE) {
+                    return 'img/chapter_cover/1012/66.jpg'
+                } else {
+                    n = 65
+                }
+            } else if (num == 64) {
+                if (LOCAL_MODE) {
+                    return 'img/chapter_cover/1012_en/64.jpg'
+                } else {
+                    n = 65
+                }
+            } else if (num == 65) {
+                if (LOCAL_MODE) {
+                    return 'img/chapter_cover/1012_en/65.jpg'
+                } else {
+                    n = 65
+                }
+            } else if (num == 66) {
+                n = 67
+            } else {
+                if (LOCAL_MODE) {
+                    return 'img/chapter_cover/1012_en/67.jpg'
+                } else {
+                    return 'https://d2tpbmzklky1cl.cloudfront.net/manga/static/comic/chapter_cover/1005/67.jpg'
+                }
+            }
+            return COVER_SRC_PREFIX + n + '.jpg'
+        }
+    }
+
+    function GetChapterTitle(i) {
+        if (LANGUAGE == 'jp') {
+            return CHAPTER_TITLES_JP[i]
+        }
+        if (LANGUAGE == 'en') {
+            return CHAPTER_TITLES_EN[i]
+        }
+        return CHAPTER_TITLES[i]
     }
 
     SetHomePage()
