@@ -1,7 +1,13 @@
 //
 (function () {
     //
-    const LOCAL_MODE = true
+    var LOCAL_MODE = true
+    const VOICE_LANGUAGE = ''
+
+    const LANGUAGE = document.getElementsByTagName('meta')['content-language'].content
+    if (LANGUAGE == 'jp') {
+        LOCAL_MODE = true
+    }
 
     const BOOK_DECRIPTION = '2000年2月1日午夜，在西伯利亚的天命巴比伦实验室中，所有研究员一夜之间全部消失。在奥托下令调查这起“神秘”事件的同时，还有人似乎在担忧着“她”的出现。而这一切，揭开了第二次崩坏的序幕…'
     const BOOK_COVER_SRC = LOCAL_MODE ? 'img/book_cover/1012.jpg' : 'https://comicstatic.bh3.com/new_static_v2/comic/book_cover/1012.jpg'
@@ -116,7 +122,7 @@
     ]
     const MUSIC_LOCAL_SRC_PREFIX = 'res/music/'
     const MUSIC_LOCAL_SRC_POSTFIX = '.mp3'
-    const VOICE_SRC_PREFIX = 'res/voice/'
+    const VOICE_SRC_PREFIX = VOICE_LANGUAGE == 'jp' ? 'res/voice_jp/' : 'res/voice/'
     const VOICE_SRC_POSTFIX = '.wav'
     const VOICE_INFO = {
         // chaper: { page: num }
