@@ -31,6 +31,40 @@
         "第五十六话 赌局", "第五十七话 集结", "第五十八话 伤痛", "第五十九话 无限回廊", "第六十话 异变",
         "第六十一话 压制", "壁纸精选III", "最终话 守护", "后日谈 归处"
     ]
+    const CHAPTER_TITLES_JP = [
+        "序章",
+        "第1話", "第2話", "第3話", "第4話", "第5話",
+        "第6話", "第7話", "第8話", "第9話", "第10話",
+        "第11話", "第12話", "第13話", "第14話", "第15話",
+        "第16話", "第17話", "第18話", "第19話", "第20話",
+        "第21話", "第22話", "第23話", "第24話", "第25話",
+        "第26話", "第27話", "第28話", "壁紙", "第29話", "第30話",
+        "第31話", "第32話", "第33話", "第34話", "第35話",
+        "第36話", "第37話", "第38話", "第39話", "第40話",
+        "第41話", "第42話", "第43話", "第44話", "第45話",
+        "第46話", "第47話", "第48話", "第49話", "壁紙II", "第50話",
+        "第51話", "第52話", "第53話", "第54話", "第55話",
+        "第56話", "第57話", "第58話", "第59話", "第60話",
+        "第61話", "壁紙III", "最终話", "後日談",
+    ]
+    const CHAPTER_TITLES_EN = [
+        "00 Prelude Tower",
+        "01 The Ghost", "02 The Girl", "03 The War Begins", "04 The Alliance", "05 The Tear",
+        "06 The Awakening", "07 The Void", "08 The Herrscher", "09 Welt Or Humanity", "10 Void Against Reason",
+        "11 The Clown", "12 Young Ziggy", "13 The Raid", "14 The Game", "15 The Present",
+        "16 The Promise", "17 Undering Dreams", "18 The Revelation", "19 Throne of Sin", "20 The Kings",
+        "21 The Plan", "22 The Launch", "23 Moonflight", "24 The Herrschers", "25 Their Battle",
+        "26 The Ninja", "27 Event Horizon", "28 Chandrasekhar", "29 Her Return", "30 Her Angels",
+        "31 Counter-Offensive", "32 Eve of War", "33 The Soulium", "34 Blade Heart", "35 Blown Away",
+        "36 Fenghuang Down", "37 Obsession", "38 The Progeny", "39 Price to Pay", "40 Cocolia",
+        "41 Field of Megiddo", "42 Fire and Ice", "43 Fists of Taixuan", "44 The Soul", "45 DEUS",
+        "46 Edge of Taixuan", "47 Broken Link", "48 The New Toy", "49 It's a Dream", "50 Happy Family",
+        "51 The Hug", "52 Final Gambit", "53 Benares", "54 Feond Gefyldan", "55 Wake Up Call",
+        "56 Alea Iacta Est", "57 The Gathering", "58 The Pain", "59 The Infinite Corridor", "60 The MANTIS",
+        "61 The Berserk", "62 Core Cascade", "63 Guardian Angel", "64 Ich liebe Dich", "65 Epilogue",
+        "66 Wallpapers"
+    ]
+
     const NUM_PAGES = [
         24, 18, 23, 18, 30,
         22, 25, 29, 21, 27,
