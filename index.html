@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>第二次崩坏</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="css/viewer.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style type="text/css" id='internal-css'>
+        .menu-icon {
+            fill: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='home'>
+        <div id='home-bg-wrapper'>
+            <img id='home-bg2'>
+            <img id='home-bg'>
+        </div>
+        <div id='home-footer'>
+            <div id='home-title'>第二次崩坏</div>
+            <div id='home-menu-wrapper'>
+                <div id='home-menu-index' class='home-menu-item'>
+                    <a href="#" class='home-menu-btn'>
+                        目录
+                    </a>
+                </div>
+                <div id='home-menu-about' class='home-menu-item'>
+                    <a href="#" class='home-menu-btn'>
+                        关于
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id='home-index-bg'></div>
+        <div id='home-index-wrapper'>
+            <div id='home-index-title'>
+                <div id='home-index-title-banner'></div>
+                <div id='home-index-title-text'></div>
+            </div>
+            <div id='home-index'></div>
+        </div>
+        <div id='home-index-return-bg'>
+            <a href="#" id='home-index-return' class='home-menu-btn'>
+                <div>返回</div>
+            </a>
+        </div>
+        <div id='home-about'>
+            <div id='home-about-bg'></div>
+            <div id='home-about-wrapper'>
+                <div>
+                    <div id='home-about-title'>
+                        <span>关于</span>
+                        <span>About</span>
+                    </div>
+                    <div id="home-about-title-line"></div>
+                    <div id='home-about-content'>
+                        <p>
+                            本作品为基于<a class="about-link" href="https://comic.bh3.com/book/1012">《第二次崩坏》漫画</a>制作的网页增强版，图片、音乐和语音素材均来自于米哈游官方，部分语音素材经过编辑。由于去除背景音等原因，部分语音会有不自然的问题。
+                            <br />
+                            感谢背景音乐歌单提供：哔哩哔哩@Eastenhhh。图片查看器：<a class="about-link" href="https://fengyuanchen.github.io/viewerjs">Viewer.js</a>。
+                        </p>
+                        <p>
+                            功能介绍：
+                            <br />
+                            - 更好用的目录
+                            <br />
+                            - 侧边工具栏
+                            <br />
+                            - 图片查看器（点击图片进入）
+                            <br />
+                            - 背景音乐自动播放和精确到页的切换
+                            <br />
+                            - 特定页的对应语音（点击图片右侧按钮播放）
+                            <br />
+                            - 可在设置中关闭背景音乐、调整图片宽度和切换背景颜色
+                        </p>
+                        <p>原作：米哈游</p>
+                        <p>制作：Xrysnow</p>
+                        <p>2021年11月13日</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery">
+        <ul id="images">
+        </ul>
+    </div>
+    <div><audio id='voice-player' style="display: none;"></audio></div>
+
+    <div class="menu" id="menu-container">
+        <div id='chapter-title' class="black-text-shadow"></div>
+
+        <div class="menu__item" id='menu-next'>
+            <div class="icon-box">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <path d="M20 12l-2.83 2.83L26.34 24l-9.17 9.17L20 36l12-12z" />
+                </svg>
+            </div>
+            <div class="menu-title black-text-shadow">下一话</div>
+        </div>
+        <div class="menu__item" id='menu-prev'>
+            <div class="icon-box">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <path d="M30.83 14.83L28 12 16 24l12 12 2.83-2.83L21.66 24z" />
+                </svg>
+            </div>
+            <div class="menu-title black-text-shadow">上一话</div>
+        </div>
+
+        <div class="menu__item" id='menu-home'>
+            <div class="icon-box">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <path
+                        d="M8 16h8V8H8v8zm12 24h8v-8h-8v8zM8 40h8v-8H8v8zm0-12h8v-8H8v8zm12 0h8v-8h-8v8zM32 8v8h8V8h-8zm-12 8h8V8h-8v8zm12 12h8v-8h-8v8zm0 12h8v-8h-8v8z" />
+                </svg>
+            </div>
+            <div class="menu-title black-text-shadow">目录</div>
+        </div>
+        <div class="menu__item" id='menu-bgm'>
+            <div id="bgm-player-container">
+            </div>
+            <div class="icon-box">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <path
+                        d="M46 10c0-2.21-1.79-4-4-4H6c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h36c2.21 0 4-1.79 4-4V10zm-4 28H6V10h36v28zm-26-8c0-3.31 2.69-6 6-6 .71 0 1 .14 2 .37V12h10v4h-6l-.01 14.05C27.96 33.34 25.3 36 22 36c-3.31 0-6-2.69-6-6z" />
+                </svg>
+            </div>
+            <div class="menu-title black-text-shadow">背景音乐</div>
+        </div>
+        <div class="menu__item" id='menu-config'>
+            <div class="icon-box">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <path
+                        d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97L29 4.84c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3c-1.22.51-2.35 1.17-3.38 1.97L9.9 10.1c-.45-.17-.97 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31C9.06 22.69 9 23.34 9 24s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3c1.22-.51 2.35-1.17 3.38-1.97l4.98 2.01c.45.17.97 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zM24 31c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+                </svg>
+            </div>
+            <div class="menu-title black-text-shadow">设置</div>
+        </div>
+
+        <div id="menu-config-container">
+            <div>
+                <div class="menu-config-text black-text-shadow">图片宽度</div>
+                <div>
+                    <input type="range" id="menu-config-width" value="50" min="50" max="90" step="5"
+                        onchange="SetGalleryWidth()">
+                    <script>
+                        function SetGalleryWidth() {
+                            const range = document.getElementById('menu-config-width');
+                            const value = parseInt(range.value);
+                            const gallery = document.getElementById('gallery');
+                            gallery.style.maxWidth = value + '%';
+                        }
+                    </script>
+                </div>
+            </div>
+            <div>
+                <div class="menu-config-text black-text-shadow">背景颜色</div>
+                <div>
+                    <select name="bg-color" id="menu-config-bg">
+                        <option value="#fff">白色</option>
+                        <option value="#000">黑色</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="menu-config-text black-text-shadow">背景音乐开关</div>
+                <div>
+                    <input type="checkbox" name="bgm-switch" id="menu-config-bgm-switch" checked='1'>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/viewer.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
