@@ -430,7 +430,7 @@
     let BgMusicSpecialPause = false
     const KCurrentChapter = 'current-chapter'
     const KBGMEnabled = 'bgm-enabled'
-    const KBgColor = 'bgm-enabled'
+    const KBgColor = 'bg-color'
     const KGalleryWidth = 'gallery-width'
     const KVoiceLanguage = 'voice-lang'
 
