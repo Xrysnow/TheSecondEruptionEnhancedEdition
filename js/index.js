@@ -1031,6 +1031,78 @@
         return v
     }
 
+    function ReplaceString(id, str) {
+        var obj = document.getElementById(id)
+        if (obj) {
+            obj.innerText = str
+        }
+    }
+
+    function ReplaceHtml(id, str) {
+        var obj = document.getElementById(id)
+        if (obj) {
+            obj.innerHTML = str
+        }
+    }
+
+    const I18N_STRING = {
+        'page-title': { en: 'Second Eruption', jp: '第二次崩壊' },
+        'home-title': { en: 'Second Eruption', jp: '第二次崩壊' },
+        'home-menu-btn-contents': { en: 'Contents', jp: '' },
+        'home-menu-btn-about': { en: 'About', jp: '' },
+        'home-index-btn-return': { en: 'Return', jp: '' },
+        'home-about-title-1': { en: 'About', jp: '' },
+        'menu-next-text': { en: 'Next', jp: '' },
+        'menu-prev-text': { en: 'Previous', jp: '' },
+        'menu-home-text': { en: 'Contents', jp: '' },
+        'menu-bgm-text': { en: 'BGM', jp: '' },
+        'menu-config-text': { en: 'Settings', jp: '' },
+        'menu-config-width-text': { en: 'Picture width', jp: '' },
+        'menu-config-bg-text': { en: 'Background color', jp: '' },
+        'menu-config-bg-1': { en: 'Light', jp: '' },
+        'menu-config-bg-2': { en: 'Dark', jp: '' },
+        'menu-config-bgm-switch-text': { en: 'BGM switch', jp: '' },
+    }
+    const I18N_HTML = {
+        'home-about-content': {
+            en: `
+            <p>
+                This webpage is a enhanced edition of <a class="about-link" href="https://manga.honkaiimpact3.com/book/1005">Second Eruption</a>. All pictures, musics and voices are from miHoYo. Some voices are edited. Due to the removal of background sounds and other reasons, some voices will be unnatural.
+                <br />
+                Thanks Bilibili@Eastenhhh to provide the background music playlist. Image viewer is <a class="about-link" href="https://fengyuanchen.github.io/viewerjs">Viewer.js</a>.
+            </p>
+            <p>
+                Features:
+                <br />
+                - Better catalog
+                <br />
+                - Side toolbar
+                <br />
+                - Image viewer (click a picture to enter)
+                <br />
+                - Automatic BGM playback and page-accurate switching
+                <br />
+                - Corresponding voice for specific pages (click the button on the right side of the picture to play)
+                <br />
+                - Useful settings
+            </p>
+            <p>Original: miHoYo</p>
+            <p>Made by: Xrysnow</p>
+            <p>2021.11.16</p>
+            `,
+            jp: ``
+        }
+    }
+    if (LANGUAGE == 'en' || LANGUAGE == 'jp') {
+        for (const k in I18N_STRING) {
+            ReplaceString(k, I18N_STRING[k][LANGUAGE])
+        }
+        for (const k in I18N_HTML) {
+            ReplaceHtml(k, I18N_HTML[k][LANGUAGE])
+        }
+    }
+
+    //
     SetHomePage()
     SetMenu()
     SetMenuConfig()
