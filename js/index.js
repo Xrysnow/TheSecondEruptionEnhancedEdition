@@ -644,6 +644,7 @@
         ToggleMenu(false)
         var title = document.getElementById('home')
         title.style.display = 'block'
+        SetLocalStorage('current-chapter', -1)
     }
 
     const GotoPage = function (idx) {
@@ -654,6 +655,7 @@
             return GotoHome()
         }
         CurrentPage = idx
+        SetLocalStorage('current-chapter', idx)
         //
         ToggleMenu(true)
         ToggleConfig(false)
@@ -1008,5 +1010,11 @@
     SetMenu()
     SetMenuConfig()
     SetStyle()
-    GotoPage(-1)
+
+    var LastCurrentPage = GetLocalStorage('current-chapter')
+    if (LastCurrentPage) {
+        GotoPage(Number(LastCurrentPage))
+    } else {
+        GotoPage(-1)
+    }
 })();
