@@ -4,9 +4,34 @@
     let LOCAL_MODE = true
     let VOICE_LANGUAGE = 'zh'
 
-    const LANGUAGE = document.getElementsByTagName('meta')['content-language'].content
+    const META = document.getElementsByTagName('meta')
+    let LANGUAGE = META['content-language'].content
+
+    {
+        let query = window.location.search.substring(1)
+        let vars = query.split("&")
+        for (let i = 0; i < vars.length; i++) {
+            let pair = vars[i].split("=")
+            if (pair[0] == 'lang') { LANGUAGE = pair[1] }
+            if (pair[0] == 'vlang') { VOICE_LANGUAGE = pair[1] }
+        }
+    }
+
     if (LANGUAGE == 'jp') {
         LOCAL_MODE = true
+        VOICE_LANGUAGE = 'jp'
+    }
+    if (META['voice-language']) {
+        VOICE_LANGUAGE = META['voice-language'].content
+    }
+
+    {
+        let href = window.location.href.split('/')
+        let page = href[href.length - 1]
+        page = page.split('?')[0]
+        if (page != 'index.html') {
+            window.location.href = 'index.html?lang=' + LANGUAGE
+        }
     }
 
     let BOOK_DECRIPTION = ''
