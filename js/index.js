@@ -264,7 +264,6 @@
 
     const MUSIC_LOCAL_SRC_PREFIX = 'res/music/'
     const MUSIC_LOCAL_SRC_POSTFIX = '.mp3'
-    const VOICE_SRC_PREFIX = VOICE_LANGUAGE == 'jp' ? 'res/voice_jp/' : 'res/voice/'
     const VOICE_SRC_POSTFIX = '.wav'
     const VOICE_INFO = {
         // chaper: { page: num }
@@ -407,6 +406,7 @@
             69: 2, // c24-11
             70: 1, // c24-11
             71: 1, // c24-11
+            // en in 63,64,65
         },
         67: {
             22: 1 // BV14X4y1w7P6
@@ -952,7 +952,7 @@
         var file = [c, p, v].map(function (e, i, a) {
             return '0'.repeat(2 - e.length) + e
         }).join('_') + VOICE_SRC_POSTFIX
-        return VOICE_SRC_PREFIX + file
+        return (VOICE_LANGUAGE == 'jp' ? 'res/voice_jp/' : 'res/voice/') + file
     }
 
     function GetChapterCoverSrc(i) {
