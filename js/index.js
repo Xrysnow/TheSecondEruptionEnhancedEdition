@@ -779,6 +779,7 @@
     function SetBackgroundColor() {
         const select = document.getElementById('menu-config-bg')
         document.getElementsByTagName('body')[0].style.backgroundColor = select.value
+        SetLocalStorage(KBgColor, select.selectedIndex)
         const icon_color = ReverseColor(select.value)
         var sheets = document.styleSheets
         for (let i = 0; i < sheets.length; i++) {
@@ -799,6 +800,11 @@
     function SetMenuConfig() {
         const select = document.getElementById('menu-config-bg')
         select.onchange = SetBackgroundColor
+        var lastBgColor = GetLocalStorage(KBgColor)
+        if (lastBgColor) {
+            select.selectedIndex = Number(lastBgColor)
+            SetBackgroundColor()
+        }
         const bgm_switch = document.getElementById('menu-config-bgm-switch')
         var handle = 0
         bgm_switch.onchange = function () {
