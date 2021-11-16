@@ -1,15 +1,15 @@
 //
 (function () {
     //
-    var LOCAL_MODE = true
-    const VOICE_LANGUAGE = ''
+    let LOCAL_MODE = true
+    let VOICE_LANGUAGE = 'zh'
 
     const LANGUAGE = document.getElementsByTagName('meta')['content-language'].content
     if (LANGUAGE == 'jp') {
         LOCAL_MODE = true
     }
 
-    var BOOK_DECRIPTION = ''
+    let BOOK_DECRIPTION = ''
     if (LANGUAGE == 'jp') {
         BOOK_DECRIPTION = 'TODO'
     } else if (LANGUAGE == 'en') {
@@ -21,7 +21,7 @@
     const BOOK_COVER_SRC = LOCAL_MODE ? 'img/book_cover/1012.jpg' : 'https://comicstatic.bh3.com/new_static_v2/comic/book_cover/1012.jpg'
     const COVER_SRC_PREFIX = LOCAL_MODE ? 'img/chapter_cover/1012/' : 'https://comicstatic.bh3.com/new_static_v2/comic/chapter_cover/1012/'
 
-    var IMG_SRC_PREFIX = null
+    let IMG_SRC_PREFIX = null
     if (LANGUAGE == 'jp') {
         IMG_SRC_PREFIX = 'img/book/1012_jp/'
     } else if (LANGUAGE == 'en') {
@@ -30,7 +30,7 @@
         IMG_SRC_PREFIX = LOCAL_MODE ? 'img/book/1012/' : 'https://comicstatic.bh3.com/new_static_v2/comic/book/1012/'
     }
 
-    var HOME_BG_SRC = IMG_SRC_PREFIX + '30/0001.jpg'
+    let HOME_BG_SRC = IMG_SRC_PREFIX + '30/0001.jpg'
     if (LANGUAGE == 'en') {
         HOME_BG_SRC = LOCAL_MODE ? 'img/book/1012_en/cover.jpg' : 'https://comicstatic.bh3.com/new_static_v2/comic/book/1012/30/0001.jpg'
     }
@@ -86,7 +86,7 @@
         "66 Wallpapers"
     ]
 
-    var NUM_PAGES = [
+    let NUM_PAGES = [
         24, 18, 23, 18, 30,
         22, 25, 29, 21, 27,
         21, 26, 27, 29, 19,
@@ -140,7 +140,7 @@
         1334673828
     ]
     // from bilibili@Eastenhhh
-    var BGM_INFO = [
+    let BGM_INFO = [
         [
             [1, 2, 3],
             [0, 48, 73]
@@ -391,18 +391,18 @@
     const VOICE_ICON = '<svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M6 18v12h8l10 10V8L14 18H6zm27 6c0-3.53-2.04-6.58-5-8.05v16.11c2.96-1.48 5-4.53 5-8.06zM28 6.46v4.13c5.78 1.72 10 7.07 10 13.41s-4.22 11.69-10 13.41v4.13c8.01-1.82 14-8.97 14-17.54S36.01 8.28 28 6.46z"/></svg>'
 
     const ViewerConfig = { zoomRatio: 0.2 }
-    var GlobalViewer = new Viewer(document.getElementById('images'), ViewerConfig)
-    var CurrentPage = -1
-    var CurrentBgMusicID = -1
-    var ShowHomeIndex = false
-    var ShowHomeAbout = false
-    var ShowMenu = false
-    var ShowConfig = false
-    var ShowBGMPlayer = false
-    var EnableBGM = true
-    var BgMusicHandle = 0
-    var BgMusicPlayerHeight = 66
-    var BgMusicSpecialPause = false
+    let GlobalViewer = new Viewer(document.getElementById('images'), ViewerConfig)
+    let CurrentPage = -1
+    let CurrentBgMusicID = -1
+    let ShowHomeIndex = false
+    let ShowHomeAbout = false
+    let ShowMenu = false
+    let ShowConfig = false
+    let ShowBGMPlayer = false
+    let EnableBGM = true
+    let BgMusicHandle = 0
+    let BgMusicPlayerHeight = 66
+    let BgMusicSpecialPause = false
 
     const ToggleHomeIndex = function (show) {
         ShowHomeIndex = show
@@ -1011,7 +1011,7 @@
     SetMenuConfig()
     SetStyle()
 
-    var LastCurrentPage = GetLocalStorage('current-chapter')
+    let LastCurrentPage = GetLocalStorage('current-chapter')
     if (LastCurrentPage) {
         GotoPage(Number(LastCurrentPage))
     } else {
