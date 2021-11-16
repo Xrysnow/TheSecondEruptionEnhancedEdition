@@ -428,6 +428,11 @@
     let BgMusicHandle = 0
     let BgMusicPlayerHeight = 66
     let BgMusicSpecialPause = false
+    const KCurrentChapter = 'current-chapter'
+    const KBGMEnabled = 'bgm-enabled'
+    const KBgColor = 'bgm-enabled'
+    const KGalleryWidth = 'gallery-width'
+    const KVoiceLanguage = 'voice-lang'
 
     const ToggleHomeIndex = function (show) {
         ShowHomeIndex = show
@@ -669,7 +674,7 @@
         ToggleMenu(false)
         var title = document.getElementById('home')
         title.style.display = 'block'
-        SetLocalStorage('current-chapter', -1)
+        SetLocalStorage(KCurrentChapter, -1)
     }
 
     const GotoPage = function (idx) {
@@ -680,7 +685,7 @@
             return GotoHome()
         }
         CurrentPage = idx
-        SetLocalStorage('current-chapter', idx)
+        SetLocalStorage(KCurrentChapter, idx)
         //
         ToggleMenu(true)
         ToggleConfig(false)
@@ -1108,9 +1113,9 @@
     SetMenuConfig()
     SetStyle()
 
-    let LastCurrentPage = GetLocalStorage('current-chapter')
-    if (LastCurrentPage) {
-        GotoPage(Number(LastCurrentPage))
+    let lastCurrentChapter = GetLocalStorage(KCurrentChapter)
+    if (lastCurrentChapter) {
+        GotoPage(Number(lastCurrentChapter))
     } else {
         GotoPage(-1)
     }
