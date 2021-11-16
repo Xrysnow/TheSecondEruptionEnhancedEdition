@@ -982,6 +982,28 @@
         return CHAPTER_TITLES[i]
     }
 
+    function SetLocalStorage(k, v) {
+        if (!window.localStorage) {
+            return
+        }
+        try {
+            window.localStorage.setItem(k, v)
+        } catch (error) {
+        }
+    }
+
+    function GetLocalStorage(k) {
+        if (!window.localStorage) {
+            return undefined
+        }
+        var v = undefined
+        try {
+            v = window.localStorage.getItem(k)
+        } catch (error) {
+        }
+        return v
+    }
+
     SetHomePage()
     SetMenu()
     SetMenuConfig()
