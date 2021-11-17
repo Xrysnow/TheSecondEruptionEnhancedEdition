@@ -836,6 +836,19 @@
             width_setter.value = lastWidth
             width_setter.onchange()
         }
+        //
+        if (LANGUAGE == 'en') {
+            document.getElementById('menu-config-vlang-container').style.display = 'block'
+            const vlang_select = document.getElementById('menu-config-vlang')
+            vlang_select.onchange = function () {
+                SetLocalStorage(KVoiceLanguage, vlang_select.selectedIndex)
+                VOICE_LANGUAGE = vlang_select.value
+            }
+            var lastVLang = GetLocalStorage(KVoiceLanguage)
+            if (lastVLang) {
+                vlang_select.selectedIndex = Number(lastVLang)
+                vlang_select.onchange()
+            }
         }
     }
     //
