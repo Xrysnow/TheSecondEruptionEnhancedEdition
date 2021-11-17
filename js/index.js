@@ -1173,7 +1173,7 @@
             <p>
                 Features:
                 <br />
-                - Better catalog
+                - Better contents
                 <br />
                 - Side toolbar
                 <br />
@@ -1181,7 +1181,7 @@
                 <br />
                 - Automatic BGM playback and page-accurate switching
                 <br />
-                - Corresponding voice for specific pages (click buttons on the right side of the picture to play)
+                - Corresponding voice of specific pages (click buttons on the right side of the picture to play)
                 <br />
                 - Reading progress and settings saving
                 <br />
