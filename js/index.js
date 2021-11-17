@@ -726,7 +726,6 @@
                 obj_div.appendChild(obj_voice_list)
             }
             for (let j = 0; j < num_voice; j++) {
-                const src = GetVoiceSrc(idx, i, j)
                 var obj_icon_box = document.createElement('div')
                 obj_icon_box.innerHTML = VOICE_ICON
                 obj_icon_box.className = 'voice-icon-box'
@@ -745,7 +744,7 @@
                     }
                     var player = document.getElementById('voice-player')
                     player.pause()
-                    player.src = src
+                    player.src = GetVoiceSrc(idx, i, j)
                     player.play()
                 }
                 obj_voice_list.appendChild(obj_icon_box)
