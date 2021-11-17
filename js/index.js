@@ -1154,9 +1154,21 @@
         'home-about-content': {
             en: `
             <p>
-                This webpage is a enhanced edition of <a class="about-link" href="https://manga.honkaiimpact3.com/book/1005">Second Eruption</a>. All pictures, musics and voices are from miHoYo. Some voices are edited. Due to the removal of background sounds and other reasons, some voices will be unnatural.
+                This webpage is an enhanced edition of <a class="about-link" href="https://manga.honkaiimpact3.com/book/1005">Second Eruption</a>. All pictures, musics and voices are from miHoYo. Some voices are edited.
                 <br />
-                Thanks Bilibili@Eastenhhh to provide the background music playlist. Image viewer is <a class="about-link" href="https://fengyuanchen.github.io/viewerjs">Viewer.js</a>.
+                BGM playlist provider: <a class="about-link" href="https://space.bilibili.com/18882628">Bilibili@Eastenhhh</a>.
+                <br />
+                Japanese version source: <a class="about-link" href="https://drive.google.com/drive/folders/1k-4hZvFf1d4nvZqXUPMOxT5mDK80kQuu">Google Drive</a>
+                <br />
+                Japanese version translator: <a class="about-link" href="https://twitter.com/ccyn3rd">Twitter@しこやん</a>
+                <br />
+                Image viewer: <a class="about-link" href="https://fengyuanchen.github.io/viewerjs">Viewer.js</a>.
+                <br />
+                Code repository: <a class="about-link" href="https://github.com/Xrysnow/TheSecondEruptionEnhancedEdition">Github</a>.
+                <br />
+                * Due to the removal of background sounds and other reasons, some voices will be unnatural.
+                <br />
+                * BGM may not play automatically if there is reading progress. Click on the blank space to play.
             </p>
             <p>
                 Features:
@@ -1169,13 +1181,15 @@
                 <br />
                 - Automatic BGM playback and page-accurate switching
                 <br />
-                - Corresponding voice for specific pages (click the button on the right side of the picture to play)
+                - Corresponding voice for specific pages (click buttons on the right side of the picture to play)
                 <br />
-                - Useful settings
+                - Reading progress and settings saving
+                <br />
+                - See settings for more features
             </p>
             <p>Original: miHoYo</p>
             <p>Made by: Xrysnow</p>
-            <p>2021.11.16</p>
+            <p>2021.11.17</p>
             `,
             jp: `-`
         }
