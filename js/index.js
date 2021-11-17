@@ -911,6 +911,20 @@
         // document.getElementById('chapter-title').textContent = ratio.toFixed(2)
     })
 
+    let IsFirstClick = true
+    window.addEventListener('click', function (e) {
+        if (!IsFirstClick) {
+            return
+        }
+        IsFirstClick = false
+        if (EnableBGM && CurrentPage > -1) {
+            var player = document.getElementById('bgm-player')
+            if (player && player.paused) {
+                player.play()
+            }
+        }
+    })
+
     function GetVoiceCount(i_chapter, i_page) {
         if (LANGUAGE != 'en') {
             if (!VOICE_INFO[i_chapter + 1]) {
