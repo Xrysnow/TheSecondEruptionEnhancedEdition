@@ -36,7 +36,7 @@
 
     let BOOK_DECRIPTION = ''
     if (LANGUAGE == 'jp') {
-        BOOK_DECRIPTION = 'TODO'
+        BOOK_DECRIPTION = '2000年2月1日午前0時、シベリアの天命バビロン実験室で、研究員全員が一夜にして姿を消した。オートがこの「謎」の事件を調査するよう命じたと同時に、「彼女」の出現を心配している人もいるようです。そのすべてが、第二次崩壊の幕を開ける…'
     } else if (LANGUAGE == 'en') {
         BOOK_DECRIPTION = 'February 2000: Every personnel of Babylon Labs vanished within a single night. Overseer Otto of Schicksal dispatched a special task force to investigate the incident. No one realized that this mysterious event would quickly escalate to global proportions.'
     } else {
@@ -1131,21 +1131,21 @@
     const I18N_STRING = {
         'page-title': { en: 'Second Eruption', jp: '第二次崩壊' },
         'home-title': { en: 'Second Eruption', jp: '第二次崩壊' },
-        'home-menu-btn-contents': { en: 'Contents', jp: '-' },
-        'home-menu-btn-about': { en: 'About', jp: '-' },
-        'home-index-btn-return': { en: 'Return', jp: '-' },
-        'home-about-title-1': { en: 'About', jp: '-' },
-        'menu-next-text': { en: 'Next', jp: '-' },
-        'menu-prev-text': { en: 'Previous', jp: '-' },
-        'menu-home-text': { en: 'Contents', jp: '-' },
-        'menu-bgm-text': { en: 'BGM', jp: '-' },
-        'menu-config-text': { en: 'Settings', jp: '-' },
-        'menu-config-width-text': { en: 'Picture width', jp: '-' },
-        'menu-config-bg-text': { en: 'Background color', jp: '-' },
-        'menu-config-bg-1': { en: 'Light', jp: '-' },
-        'menu-config-bg-2': { en: 'Dark', jp: '-' },
-        'menu-config-bgm-switch-text': { en: 'BGM on/off', jp: '-' },
-        'menu-config-volume-text': { en: 'BGM volume', jp: '-' },
+        'home-menu-btn-contents': { en: 'Contents', jp: '目次' },
+        'home-menu-btn-about': { en: 'About', jp: '概要' },
+        'home-index-btn-return': { en: 'Return', jp: '戻る' },
+        'home-about-title-1': { en: 'About', jp: '概要' },
+        'menu-next-text': { en: 'Next', jp: '次へ' },
+        'menu-prev-text': { en: 'Previous', jp: '前へ' },
+        'menu-home-text': { en: 'Contents', jp: '目次' },
+        'menu-bgm-text': { en: 'BGM', jp: 'BGM' },
+        'menu-config-text': { en: 'Settings', jp: '設定' },
+        'menu-config-width-text': { en: 'Picture width', jp: '画像幅' },
+        'menu-config-bg-text': { en: 'Background color', jp: '背景色' },
+        'menu-config-bg-1': { en: 'Light', jp: 'Light' },
+        'menu-config-bg-2': { en: 'Dark', jp: 'Dark' },
+        'menu-config-bgm-switch-text': { en: 'BGM on/off', jp: 'BGMスイッチ' },
+        'menu-config-volume-text': { en: 'BGM volume', jp: 'BGM音量' },
         'menu-config-vlang-text': { en: 'Voice language', jp: '-' },
         'menu-config-vlang-1': { en: 'Chinese', jp: '-' },
         'menu-config-vlang-2': { en: 'Japanese', jp: '-' },
@@ -1191,7 +1191,49 @@
             <p>Made by: Xrysnow</p>
             <p>2021.11.17</p>
             `,
-            jp: `-`
+            jp: `
+            <p>
+            この作品は<a class="about-link"
+                href="https://comic.bh3.com/book/1012">漫画「第二次崩壊」</a>の二次創作です。画像、音楽、ボイスはmiHoYo公式より。ボイスは一部編集されています。
+            <br />
+            BGMリスト提供：<a class="about-link" href="https://space.bilibili.com/18882628">ピリピリ@Eastenhhh</a>
+            <br />
+            日本語版ソース：<a class="about-link"
+                href="https://drive.google.com/drive/folders/1k-4hZvFf1d4nvZqXUPMOxT5mDK80kQuu">Google
+                Drive</a>
+            <br />
+            日本語版の翻訳：<a class="about-link" href="https://twitter.com/ccyn3rd">Twitter@しこやん</a>
+            <br />
+            イメージビューア：<a class="about-link" href="https://fengyuanchen.github.io/viewerjs">Viewer.js</a>
+            <br />
+            コードリポジトリ：<a class="about-link"
+                href="https://github.com/Xrysnow/TheSecondEruptionEnhancedEdition">Github</a>
+            <br />
+            * 背景音の除去などにより、一部のボイスが不自然になることがあります。
+            <br />
+            * 進捗状況があるの場合、BGMが自動的に再生されないことがあります。ページの空白をクリックすると再生されます。
+        </p>
+        <p>
+            機能紹介：
+            <br />
+            - 改良された目次
+            <br />
+            - サイドツールバー
+            <br />
+            - イメージビューア（画像をクリックするとアクセスできます）
+            <br />
+            - BGMの自動再生と切り替え
+            <br />
+            - 特定のページに対応するボイス（画像の右のボタンをクリックすると再生されます）
+            <br />
+            - 進捗状況と設定の保存
+            <br />
+            - その他の機能については、設定をご覧ください
+        </p>
+        <p>原作：miHoYo</p>
+        <p>製作：Xrysnow</p>
+        <p>2021.11.17</p>
+        `
         }
     }
     if (LANGUAGE == 'en' || LANGUAGE == 'jp') {
