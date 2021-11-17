@@ -141,29 +141,23 @@
 
     // from CloudMusic@EastenTX, list id = 6941570124
     const BGM_SINGLE_ID = [
-        1818567465,
-        1818580970,
-        468513225,
-        1334673822,
-        1334672915,
-        1818580977,
-        484056610,
-        1818580979,
-        1334672907,
-        484056613,
-        1818568430,
-        1440622024,
-        1818580969,
-        1818568450,
-        1464489909,
-        1391654113,
-        1480346244,
-        1818580981,
-        1818567499,
-        1818581984,
-        1818580988,
-        1334673828
+        1818567465, 1818580970, 468513225, 1334673822, 1334672915,
+        1818580977, 484056610, 1818580979, 1334672907, 484056613,
+        1818568430, 1440622024, 1818580969, 1818568450, 1464489909,
+        1391654113, 1480346244, 1818580981, 1818567499, 1818581984,
+        1818580988, 1334673828
     ]
+    // loudness matching
+    const BGM_BASE_VOLUME = [
+        -9.86, -7.43, -8.97, -14.48, -9.31,
+        -5.78, -15.47, -1.39, -14.51, -16.47,
+        -8.50, -12.84, -11.49, -7.69, -11.63,
+        0/* 8.25 */, -12.30, -7.80, -14.55, -11.50,
+        -15.37, -14.30,
+    ]
+    for (let i = 0; i < BGM_BASE_VOLUME.length; i++) {
+        BGM_BASE_VOLUME[i] = Math.pow(10, BGM_BASE_VOLUME[i] / 20)
+    }
     // from bilibili@Eastenhhh
     let BGM_INFO = [
         [
@@ -532,7 +526,7 @@
             player.loop = true
             player.autoplay = true
             player.controls = true
-            player.volume = BgMusicVolume
+            player.volume = BGM_BASE_VOLUME[id - 1] * BgMusicVolume
             player.src = MUSIC_LOCAL_SRC_PREFIX + id + MUSIC_LOCAL_SRC_POSTFIX
             container.appendChild(player)
         }
@@ -853,7 +847,7 @@
             BgMusicVolume = Number(value) / 100
             var player = document.getElementById('bgm-player')
             if (player && CurrentBgMusicID > 0) {
-                player.volume = BgMusicVolume
+                player.volume = BGM_BASE_VOLUME[CurrentBgMusicID - 1] * BgMusicVolume
             }
         }
         var lastVolume = GetLocalStorage(KBGMVolume)
