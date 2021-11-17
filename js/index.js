@@ -29,8 +29,8 @@
         let href = window.location.href.split('/')
         let page = href[href.length - 1]
         page = page.split('?')[0]
-        if (page != 'index.html') {
-            window.location.href = 'index.html?lang=' + LANGUAGE
+        if (page != '0.html') {
+            window.location.href = '0.html?lang=' + LANGUAGE
         }
     }
 
