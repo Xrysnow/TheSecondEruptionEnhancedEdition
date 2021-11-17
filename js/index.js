@@ -805,9 +805,11 @@
             select.selectedIndex = Number(lastBgColor)
             SetBackgroundColor()
         }
+        //
         const bgm_switch = document.getElementById('menu-config-bgm-switch')
         var handle = 0
         bgm_switch.onchange = function () {
+            SetLocalStorage(KBGMEnabled, Number(bgm_switch.checked))
             if (handle) {
                 clearTimeout(handle)
             }
@@ -823,6 +825,12 @@
                     RemoveBGMPlayer()
                 }
             }, 500)
+        }
+        var lastBGMEnabled = GetLocalStorage(KBGMEnabled)
+        if (lastBGMEnabled && Number(lastBGMEnabled) == 0) {
+            bgm_switch.checked = false
+            bgm_switch.onchange()
+        }
         //
         const width_setter = document.getElementById('menu-config-width')
         width_setter.onchange = function () {
