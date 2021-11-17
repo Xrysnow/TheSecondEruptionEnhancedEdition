@@ -963,9 +963,9 @@
         } else {
             var num = i_chapter + 1
             var c = num
-            if (num >= 30 && num <= 51) {
+            if (num >= 30 && num <= 50) {
                 c = num + 1
-            } else if (num >= 52 && num <= 62) {
+            } else if (num >= 51 && num <= 62) {
                 c = num + 2
             } else if (num == 63) {
                 c = 66
@@ -1006,9 +1006,9 @@
         if (LANGUAGE == 'en') {
             var num = i_chapter + 1
             c = num
-            if (num >= 30 && num <= 51) {
+            if (num >= 30 && num <= 50) {
                 c = num + 1
-            } else if (num >= 52 && num <= 62) {
+            } else if (num >= 51 && num <= 62) {
                 c = num + 2
             } else if (num == 63) {
                 c = 66
