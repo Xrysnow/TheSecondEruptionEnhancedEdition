@@ -148,16 +148,7 @@
             <div>
                 <div class="menu-config-text black-text-shadow" id="menu-config-width-text">图片宽度</div>
                 <div>
-                    <input type="range" id="menu-config-width" value="50" min="50" max="90" step="5"
-                        onchange="SetGalleryWidth()">
-                    <script>
-                        function SetGalleryWidth() {
-                            const range = document.getElementById('menu-config-width');
-                            const value = parseInt(range.value);
-                            const gallery = document.getElementById('gallery');
-                            gallery.style.maxWidth = value + '%';
-                        }
-                    </script>
+                    <input type="range" id="menu-config-width" value="50" min="20" max="90" step="5">
                 </div>
             </div>
             <div>

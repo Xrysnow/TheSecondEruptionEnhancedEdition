@@ -823,6 +823,19 @@
                     RemoveBGMPlayer()
                 }
             }, 500)
+        //
+        const width_setter = document.getElementById('menu-config-width')
+        width_setter.onchange = function () {
+            const value = width_setter.value
+            SetLocalStorage(KGalleryWidth, value)
+            const gallery = document.getElementById('gallery')
+            gallery.style.maxWidth = parseInt(value) + '%'
+        }
+        var lastWidth = GetLocalStorage(KGalleryWidth)
+        if (lastWidth) {
+            width_setter.value = lastWidth
+            width_setter.onchange()
+        }
         }
     }
     //
