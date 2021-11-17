@@ -428,10 +428,12 @@
     let BgMusicHandle = 0
     let BgMusicPlayerHeight = 66
     let BgMusicSpecialPause = false
+    let BgMusicVolume = 1
     const KCurrentChapter = 'current-chapter'
-    const KBGMEnabled = 'bgm-enabled'
-    const KBgColor = 'bg-color'
     const KGalleryWidth = 'gallery-width'
+    const KBgColor = 'bg-color'
+    const KBGMEnabled = 'bgm-enabled'
+    const KBGMVolume = 'bgm-volume'
     const KVoiceLanguage = 'voice-lang'
 
     const ToggleHomeIndex = function (show) {
@@ -530,7 +532,7 @@
             player.loop = true
             player.autoplay = true
             player.controls = true
-            player.volume = 0.5
+            player.volume = BgMusicVolume
             player.src = MUSIC_LOCAL_SRC_PREFIX + id + MUSIC_LOCAL_SRC_POSTFIX
             container.appendChild(player)
         }
@@ -844,6 +846,22 @@
             width_setter.onchange()
         }
         //
+        const volume_setter = document.getElementById('menu-config-bgm-volume')
+        volume_setter.onchange = function () {
+            const value = volume_setter.value
+            SetLocalStorage(KBGMVolume, value)
+            BgMusicVolume = Number(value) / 100
+            var player = document.getElementById('bgm-player')
+            if (player && CurrentBgMusicID > 0) {
+                player.volume = BgMusicVolume
+            }
+        }
+        var lastVolume = GetLocalStorage(KBGMVolume)
+        if (lastVolume) {
+            volume_setter.value = lastVolume
+            volume_setter.onchange()
+        }
+        //
         if (LANGUAGE == 'en') {
             document.getElementById('menu-config-vlang-container').style.display = 'block'
             const vlang_select = document.getElementById('menu-config-vlang')
@@ -1120,7 +1138,8 @@
         'menu-config-bg-text': { en: 'Background color', jp: '-' },
         'menu-config-bg-1': { en: 'Light', jp: '-' },
         'menu-config-bg-2': { en: 'Dark', jp: '-' },
-        'menu-config-bgm-switch-text': { en: 'BGM On/Off', jp: '-' },
+        'menu-config-bgm-switch-text': { en: 'BGM on/off', jp: '-' },
+        'menu-config-volume-text': { en: 'BGM volume', jp: '-' },
         'menu-config-vlang-text': { en: 'Voice language', jp: '-' },
         'menu-config-vlang-1': { en: 'Chinese', jp: '-' },
         'menu-config-vlang-2': { en: 'Japanese', jp: '-' },
