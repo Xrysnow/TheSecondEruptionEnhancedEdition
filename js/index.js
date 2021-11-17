@@ -261,21 +261,22 @@
     const VOICE_SRC_POSTFIX = '.wav'
     const VOICE_INFO = {
         // chaper: { page: num }
+        // chaper: { page: [num, pos] }
         1: {
             3: 1, // c6-7
             4: 1, // c23-5
             en: 1 // offset or mapping for en
         },
         3: {
-            8: 2, // c24-11
-            14: 1, // c24-11
+            8: [2, 58], // c24-11
+            14: [1, 40], // c24-11
             15: 2, // c24-11
         },
         4: {
-            10: 1, // 德莉莎-战斗
+            10: [1, 46.5], // 德莉莎-战斗
         },
         6: {
-            4: 1, // c24-11
+            4: [1, 18], // c24-11
             en: 1
         },
         7: {
@@ -289,14 +290,14 @@
         8: {
             13: 1, // BV1aW411P7UJ
             17: 1, // c2-17
-            24: 1, // 原神-温迪-战斗
+            24: [1, 23], // 原神-温迪-战斗
         },
         10: {
             8: 1, // c9-3
-            13: 1, // c24-11
+            13: [1, 49.5], // c24-11
             18: 1, // c24-11
             20: 1, // BV1H54y1y7wJ
-            22: 1, // c24-11
+            22: [1, 40.5], // c24-11
             en: { 8: 8, 13: 13, 18: 18, 21: 20, 23: 22 }
         },
         11: {
@@ -308,14 +309,14 @@
             3: 1, // c11-15
         },
         19: {
-            13: 1, // c24-11
+            13: [1, 48], // c24-11
         },
         23: {
-            8: 1, // c11-15
-            12: 1, // c11-15
+            8: [1, 58], // c11-15
+            12: [1, 14.5], // c11-15
         },
         26: {
-            2: 1, // BV1aW411P7UJ
+            2: [1, 19.5], // BV1aW411P7UJ
         },
         29: {
             2: 1, // c11-15
@@ -328,33 +329,33 @@
             17: 1, // c24-11
         },
         46: {
-            3: 1, // c20
+            3: [1, 43], // c20
             4: 1, // c9-6
         },
         48: {
             14: 1, // BV1H54y1y7wJ
-            15: 1, // c13-ex3
+            15: [1, 62.5], // c13-ex3
         },
         49: {
-            5: 1, // BV1Ut411v74a
+            5: [1, 58], // BV1Ut411v74a
         },
         51: {
             3: 1, // c5-10
-            19: 1, // c24-11
+            19: [1, 54], // c24-11
             20: 2, // c24-11
         },
         53: {
-            9: 1, // c24-11
+            9: [1, 66], // c24-11
             10: 3, // c24-11
             11: 5, // c24-11
             12: 1, // c24-11
             14: 2, // c24-11
             15: 1, // c24-11
-            17: 2, // c24-11
+            17: [2, 33], // c24-11
         },
         54: {
-            6: 1, // c24-11
-            7: 1, // c24-11
+            6: [1, 51.5], // c24-11
+            7: [1, 31.5], // c24-11
             8: 2, // c24-11
             9: 3, // c24-11
             10: 1, // c24-11
@@ -374,7 +375,7 @@
             14: 3, // c24-11
         },
         60: {
-            16: 2, // c24-11
+            16: [2, 38], // c24-11
             17: 1, // c24-11
             21: 1, // c9-4
         },
@@ -384,17 +385,17 @@
             20: 3, // c24-11
             21: 1, // c24-11
             22: 1, // c24-11
-            23: 1, // c24-11
+            23: [1, 57.5], // c24-11
         },
         64: {
-            9: 1, // BV1aW411P7UJ
+            9: [1, 29], // BV1aW411P7UJ
         },
         66: {
             6: 2, // c24-11
             7: 2, // c24-11
             8: 1, // c24-11
             46: 1, // BV1H54y1y7wJ
-            53: 1, // BV1H54y1y7wJ
+            53: [1, 24.5], // BV1H54y1y7wJ
             66: 1, // c24-11
             68: 3, // c24-11
             69: 2, // c24-11
@@ -714,12 +715,23 @@
             obj_li.appendChild(obj_div)
             obj_ul.appendChild(obj_li)
             //
-            var num_voice = GetVoiceCount(idx, i)
+            var voice_info = GetVoiceInfo(idx, i)
+            var num_voice = 0
+            var voice_pos = 0
+            if (typeof (voice_info) == 'number') {
+                num_voice = voice_info
+            } else {
+                num_voice = voice_info[0]
+                voice_pos = voice_info[1]
+            }
             var obj_voice_list = num_voice ? document.createElement('div') : null
             if (num_voice) {
                 obj_voice_list = document.createElement('div')
                 obj_voice_list.className = 'voice-icon-list'
                 obj_div.appendChild(obj_voice_list)
+                if (voice_pos > 0) {
+                    obj_voice_list.style.top = voice_pos + '%'
+                }
             }
             for (let j = 0; j < num_voice; j++) {
                 var obj_icon_box = document.createElement('div')
@@ -937,7 +949,7 @@
         }
     })
 
-    function GetVoiceCount(i_chapter, i_page) {
+    function GetVoiceInfo(i_chapter, i_page) {
         const invalid = 0
         if (LANGUAGE != 'en') {
             if (!VOICE_INFO[i_chapter + 1]) {
