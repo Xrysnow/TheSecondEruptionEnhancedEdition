@@ -797,11 +797,11 @@
     }
 
     function SetMenuConfig() {
-        const select = document.getElementById('menu-config-bg')
-        select.onchange = SetBackgroundColor
+        const bg_select = document.getElementById('menu-config-bg')
+        bg_select.onchange = SetBackgroundColor
         var lastBgColor = GetLocalStorage(KBgColor)
         if (lastBgColor) {
-            select.selectedIndex = Number(lastBgColor)
+            bg_select.selectedIndex = Number(lastBgColor)
             SetBackgroundColor()
         }
         //
@@ -926,13 +926,14 @@
     })
 
     function GetVoiceCount(i_chapter, i_page) {
+        const invalid = 0
         if (LANGUAGE != 'en') {
             if (!VOICE_INFO[i_chapter + 1]) {
-                return 0
+                return invalid
             }
             var v = VOICE_INFO[i_chapter + 1][i_page + 1]
             if (!v) {
-                return 0
+                return invalid
             }
             return v
         } else {
@@ -954,7 +955,7 @@
                 c = 67
             }
             if (!VOICE_INFO[c]) {
-                return 0
+                return invalid
             }
             if (VOICE_INFO[c].en) {
                 mapping = VOICE_INFO[c].en
@@ -963,12 +964,12 @@
                 } else if (mapping[i_page + 1]) {
                     i_page = mapping[i_page + 1] - 1
                 } else {
-                    return 0
+                    return invalid
                 }
             }
             var v = VOICE_INFO[c][i_page + 1]
             if (!v) {
-                return 0
+                return invalid
             }
             return v
         }
