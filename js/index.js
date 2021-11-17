@@ -1085,20 +1085,23 @@
     const I18N_STRING = {
         'page-title': { en: 'Second Eruption', jp: '第二次崩壊' },
         'home-title': { en: 'Second Eruption', jp: '第二次崩壊' },
-        'home-menu-btn-contents': { en: 'Contents', jp: '' },
-        'home-menu-btn-about': { en: 'About', jp: '' },
-        'home-index-btn-return': { en: 'Return', jp: '' },
-        'home-about-title-1': { en: 'About', jp: '' },
-        'menu-next-text': { en: 'Next', jp: '' },
-        'menu-prev-text': { en: 'Previous', jp: '' },
-        'menu-home-text': { en: 'Contents', jp: '' },
-        'menu-bgm-text': { en: 'BGM', jp: '' },
-        'menu-config-text': { en: 'Settings', jp: '' },
-        'menu-config-width-text': { en: 'Picture width', jp: '' },
-        'menu-config-bg-text': { en: 'Background color', jp: '' },
-        'menu-config-bg-1': { en: 'Light', jp: '' },
-        'menu-config-bg-2': { en: 'Dark', jp: '' },
-        'menu-config-bgm-switch-text': { en: 'BGM switch', jp: '' },
+        'home-menu-btn-contents': { en: 'Contents', jp: '-' },
+        'home-menu-btn-about': { en: 'About', jp: '-' },
+        'home-index-btn-return': { en: 'Return', jp: '-' },
+        'home-about-title-1': { en: 'About', jp: '-' },
+        'menu-next-text': { en: 'Next', jp: '-' },
+        'menu-prev-text': { en: 'Previous', jp: '-' },
+        'menu-home-text': { en: 'Contents', jp: '-' },
+        'menu-bgm-text': { en: 'BGM', jp: '-' },
+        'menu-config-text': { en: 'Settings', jp: '-' },
+        'menu-config-width-text': { en: 'Picture width', jp: '-' },
+        'menu-config-bg-text': { en: 'Background color', jp: '-' },
+        'menu-config-bg-1': { en: 'Light', jp: '-' },
+        'menu-config-bg-2': { en: 'Dark', jp: '-' },
+        'menu-config-bgm-switch-text': { en: 'BGM On/Off', jp: '-' },
+        'menu-config-vlang-text': { en: 'Voice language', jp: '-' },
+        'menu-config-vlang-1': { en: 'Chinese', jp: '-' },
+        'menu-config-vlang-2': { en: 'Japanese', jp: '-' },
     }
     const I18N_HTML = {
         'home-about-content': {
@@ -1127,7 +1130,7 @@
             <p>Made by: Xrysnow</p>
             <p>2021.11.16</p>
             `,
-            jp: ``
+            jp: `-`
         }
     }
     if (LANGUAGE == 'en' || LANGUAGE == 'jp') {
