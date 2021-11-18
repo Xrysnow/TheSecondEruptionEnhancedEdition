@@ -1,10 +1,13 @@
+<details>
+<summary>中文</summary>
+
 # 「第二次崩坏」增强版
 
 **原作：米哈游**
 
 **制作：Xrysnow**
 
-**本仓库仅保存代码，发布页请移步[此处](https://www.bilibili.com/read/cv13984991)，下载地址见[此处](https://pan.baidu.com/s/1K0etjQwJOzGC_pbTURdGUg)（提取码:t4uf）。**
+**本仓库仅保存代码，发布页请移步[此处](https://www.bilibili.com/read/cv13984991)，下载地址：[百度云](https://pan.baidu.com/s/1K0etjQwJOzGC_pbTURdGUg)（提取码:t4uf），[阿里云](https://www.aliyundrive.com/s/k127cDjHf26)（非Windows系统请更改后缀名为zip）。**
 
 本作品为基于[《第二次崩坏》漫画](https://comic.bh3.com/book/1012)制作的网页增强版，图片、音乐和语音素材均来自于米哈游官方，部分语音素材经过编辑。
 
@@ -28,6 +31,25 @@
 - 特定页的对应语音（点击图片右侧按钮播放）
 - 保存阅读进度和设置
 - 更多功能详见设置
+
+### 更新日志
+
+2020.11.17 版本1.01
+- 增加日语和英语版本
+- 保存进度和设置
+- 增加背景音乐音量调节
+- 背景音乐统一音量
+- 调整语音按钮位置
+- 调整部分语音
+- 更新关于页面
+
+2020.11.13 版本1.00
+- 初次发布
+
+</details>
+
+<details>
+<summary>English</summary>
 
 # 「Second Eruption」Enhanced Edition
 
@@ -59,3 +81,5 @@ This is an enhanced edition of [Second Eruption](https://comic.bh3.com/book/1012
 - Corresponding voice of specific pages (click buttons on the right side of the picture to play)
 - Reading progress and settings saving
 - See settings for more features
+
+</details>
