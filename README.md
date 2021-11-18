@@ -59,7 +59,7 @@
 
 **This repo only has codes, see [here](https://www.bilibili.com/read/cv13984991) for the release page and [here](https://mega.nz/folder/HcYDmQpS#hdrpvOEg-v0f7x7cFU2i9w) for downloads.**
 
-This is an enhanced edition of [Second Eruption](https://comic.bh3.com/book/1012). All pictures, musics and voices are from miHoYo. Some voices are edited.
+This is an enhanced edition of [Second Eruption](https://manga.honkaiimpact3.com/book/1005). All pictures, musics and voices are from miHoYo. Some voices are edited.
 
 - BGM playlist provider: [Bilibili@Eastenhhh](https://space.bilibili.com/18882628)
 - Japanese version source: [Google Drive](https://drive.google.com/drive/folders/1k-4hZvFf1d4nvZqXUPMOxT5mDK80kQuu)
