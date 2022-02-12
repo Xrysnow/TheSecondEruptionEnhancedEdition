@@ -435,6 +435,7 @@
     border-left-width: 0px;
     border-color: #777;
     border-style: solid;
+    z-index: 2;
 }
 
 .black-text-shadow {
