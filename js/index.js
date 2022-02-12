@@ -216,6 +216,7 @@
         1: {
             3: 1, // c6-7
             4: 1, // c23-5
+            14: 2, // c28-4
             en: 1 // offset or mapping for en
         },
         3: {
@@ -258,6 +259,23 @@
         },
         12: {
             3: 1, // c11-15
+        },
+        13: {
+            3: [1, 31], // c28-4
+            25: 1, // c28-2
+        },
+        14: {
+            8: 4, // c28-4
+            9: 1, // c28-4
+        },
+        15: {
+            10: [2, 39.5], // c28-4
+            11: 3, // c28-4
+            12: 1, // c28-4
+        },
+        18: {
+            20: [2, 62], // c28-4
+            21: [2, 27], // c28-4
         },
         19: {
             13: [1, 48], // c24-11
@@ -345,8 +363,12 @@
             6: 2, // c24-11
             7: 2, // c24-11
             8: 1, // c24-11
-            46: 1, // BV1H54y1y7wJ
-            53: [1, 24.5], // BV1H54y1y7wJ
+            // 46: 1, // BV1H54y1y7wJ
+            // 53: [1, 24.5], // BV1H54y1y7wJ
+            44: 3, // c28-4
+            60: 2, // c28-4
+            61: 3, // c28-4
+            62: 3, // c28-4
             66: 1, // c24-11
             68: 3, // c24-11
             69: 2, // c24-11
@@ -375,12 +397,35 @@
     let BgMusicPlayerHeight = 66
     let BgMusicSpecialPause = false
     let BgMusicVolume = 1
+    let GlobalTaskInterval = 10
+    let GlobalTasks = []
     const KCurrentChapter = 'current-chapter'
     const KGalleryWidth = 'gallery-width'
     const KBgColor = 'bg-color'
     const KBGMEnabled = 'bgm-enabled'
     const KBGMVolume = 'bgm-volume'
     const KVoiceLanguage = 'voice-lang'
+
+    function AddGlobalTask(f, tag, intv) {
+        if (intv < 1) {
+            intv = 1
+        }
+        GlobalTasks[tag] = [f, intv, 0]
+    }
+    function RemoveGlobalTask(tag) {
+        delete GlobalTasks[tag]
+    }
+    function DoGlobalTasks() {
+        let sorted = Object.keys(GlobalTasks).sort()
+        for (let k of sorted) {
+            const t = GlobalTasks[k]
+            if (t[2] % t[1] == 0) {
+                t[0]()
+            }
+            t[2]++
+        }
+    }
+    setInterval(DoGlobalTasks, GlobalTaskInterval)
 
     const ToggleHomeIndex = function (show) {
         ShowHomeIndex = show
@@ -479,8 +524,20 @@
             player.autoplay = true
             player.controls = true
             player.volume = BGM_BASE_VOLUME[id - 1] * BgMusicVolume
-            player.src = MUSIC_LOCAL_SRC_PREFIX + id + MUSIC_LOCAL_SRC_POSTFIX
+            let src = MUSIC_LOCAL_SRC_PREFIX + id + MUSIC_LOCAL_SRC_POSTFIX
+            player.src = src
+            player.bgm_id = id
             container.appendChild(player)
+            if (id == 28) {
+                AddGlobalTask(function () {
+                    let p = document.getElementById('bgm-player')
+                    if (p.bgm_id === 28 && p.currentTime > 23) {
+                        p.currentTime = 5
+                    }
+                }, '1-bgm-28', 1)
+            } else {
+                RemoveGlobalTask('1-bgm-28')
+            }
         }
         //
         console.log('change bgm to ' + id)
